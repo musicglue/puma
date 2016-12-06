@@ -284,8 +284,7 @@ module Puma
 
     def title
       buffer = "puma #{Puma::Const::VERSION} (#{@options[:binds].join(',')})"
-      buffer << " [#{@options[:tag]}]" if @options[:tag] && !@options[:tag].empty?
-      buffer
+      (@options[:tag] && !@options[:tag].empty?) ? "#{buffer} [#{@options[:tag]}]" : buffer
     end
 
     def set_rack_environment
